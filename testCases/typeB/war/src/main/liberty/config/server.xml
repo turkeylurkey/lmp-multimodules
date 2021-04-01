@@ -11,5 +11,5 @@
         httpsPort="${default.https.port}" id="defaultHttpEndpoint" />
 
     <webApplication id="guide-maven-multimodules-war"
-        location="guide-maven-multimodules-war.war"/>
+        location="guide-maven-multimodules-war.war" contextRoot="/converter/"/>
 </server>
