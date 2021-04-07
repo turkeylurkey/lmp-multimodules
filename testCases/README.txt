@@ -15,11 +15,13 @@ d)  war(MM)+jar
 e)  pom, liberty-assembly+ear+war+jar
     -Server info in ear module
     -Main pom: ./pom.xml
+    -For devc, use -Ddockerfile=../Dockerfile
 f)  liberty-assembly+ear+war+jar
     -invalid: <module> requires packaging type pom
 g)  pom,  server(pom)+ear+war+jar
     -Server info in pom module
     -Main pom: ./pom.xml
+    -For devc, use -Ddockerfile=../Dockerfile
 h)  server(pom)+ear+war+jar
     -invalid: <module> requires packaging type pom
 i)   same as (a) but "ear" project has a <parent> which is not the "pom" project
