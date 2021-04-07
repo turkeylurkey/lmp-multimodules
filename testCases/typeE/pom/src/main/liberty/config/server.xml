@@ -2,7 +2,7 @@
 
     <featureManager>
         <feature>jsp-2.3</feature>
-        <feature>mpHealth-2.2</feature>
+
     </featureManager>
 
     <variable name="default.http.port" defaultValue="9080" />
@@ -12,7 +12,7 @@
         httpsPort="${default.https.port}" id="defaultHttpEndpoint" />
 
     <enterpriseApplication id="guide-maven-multimodules-ear"
-        location="guide-maven-multimodules-ear-1.0-SNAPSHOT.ear"
+        location="guide-maven-multimodules-ear.ear"
         name="guide-maven-multimodules-ear" />
 
 </server>
