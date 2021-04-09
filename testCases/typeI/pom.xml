@@ -15,6 +15,5 @@
         <module>jar</module>
         <module>war</module>
         <module>ear</module>
-        <module>parent</module>
     </modules>
 </project>
