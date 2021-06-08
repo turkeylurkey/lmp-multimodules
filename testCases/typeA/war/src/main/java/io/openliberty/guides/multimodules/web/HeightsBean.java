@@ -19,6 +19,7 @@ public class HeightsBean implements java.io.Serializable {
     private int inches = 0;
 
     public HeightsBean() {
+
     }
 
     // Capitalize the first letter of the name i.e. first letter after get
