@@ -59,19 +59,19 @@ upstream modules: ear, war, jar
 
 2. Press `Enter` to run tests, all tests across all modules should run in the same order as the reactor build.
 
-3. Hot deployment of a java source file in main and upstream modules.
+3. Verify hot deployment of a java source file in main and upstream modules. On successful compilation, dev mode should retry compiling all other failing source files across ALL modules. 
 
     For example:
     - in `war/src/main/java/io/openliberty/guides/multimodules/web/HeightsBean.java`, add an extra parameter to one of the `io.openliberty.guides.multimodules.lib.Converter` method calls. Dev mode should throw compilation errors.
     - in `jar/src/main/java/io/openliberty/guides/multimodules/lib/Converter.java`, add the new parameter to the corresponding method. Dev mode should successfully compile the `Converter` class from the jar module, and then try to compile the failing `HeightsBean` class from the war module.
 
-4. Hot deployment of a java test file in main and upstream modules. Pressing `Enter` should run tests with latest change. On successful compilation, should retry compiling all other failing tests within the SAME module. 
+4. Verify hot deployment of a java test file in main and upstream modules. Pressing `Enter` should run tests with latest change. On successful compilation, dev mode should retry compiling all other failing tests within the SAME module. 
 
-Try adding a new `src/test/java` directory to any of the upstream modules, that directory should be watched and files within should be compiled upon change.
+    Try adding a new `src/test/java` directory to any of the upstream modules, that directory should be watched and files within should be compiled upon change.
 
-Note: Any unit tests added to an `ear` module should be skipped.
+    Note: Any unit tests added to an `ear` module should be skipped.
 
-5. Add the `skipTests`, `skipUTs` or `skipITs` property to any of the modules pom file, app should redeploy, and press Enter to see if the change took effect. 
+5. Add the `skipTests`, `skipUTs` or `skipITs` property to any of the modules' pom.xml file, app should redeploy, and press Enter to see if the change took effect. 
 
     For example:
     - in `war/pom.xml` add the following property: `<skipITs>true</skipITs>`
