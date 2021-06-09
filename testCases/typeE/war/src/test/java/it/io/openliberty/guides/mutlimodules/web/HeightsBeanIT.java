@@ -8,10 +8,11 @@
  * Contributors:
  *     IBM Corporation - Initial implementation
  *******************************************************************************/
-package it.io.openliberty.guides.multimodules;
+package it.io.openliberty.guides.multimodules.web;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -20,10 +21,10 @@ import java.net.URL;
 
 import org.junit.jupiter.api.Test;
 
-public class IT {
+public class HeightsBeanIT {
     String port = System.getProperty("default.http.port");
     String war = "converter";
-    String urlBase = "http://localhost:" + port + "/" + war + "/";
+    String urlBase = "http://localhost:" + "9080" + "/" + war + "/";
 
     @Test
     public void testIndexPage() throws Exception {
@@ -64,3 +65,4 @@ public class IT {
     }
 
 }
+
