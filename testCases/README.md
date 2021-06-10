@@ -20,7 +20,7 @@ b)  pom, war+jar
 - invalid: <module> requires packaging type pom
 
 e)  pom, liberty-assembly+ear+war+jar    
-- Server info in ear module
+- Server info in pom module
 - Main pom: ./pom.xml
 - For devc, use -Ddockerfile=../Dockerfile
 - Tests exist in every module
