@@ -71,7 +71,9 @@ upstream modules: ear, war, jar
 
     Note: Any unit tests added to an `ear` module should be skipped.
 
-5. Add the `skipTests`, `skipUTs` or `skipITs` property to any of the modules' pom.xml file, app should redeploy, and press Enter to see if the change took effect. 
+5. Add the `skipTests` or `skipITs` property to any of the modules' pom.xml file, app should redeploy, and press Enter to see if the change took effect. These properties are handled by the Maven surefire/failsafe plugins. Otherwise, if you would like to configure `skipUTs` with different values for each module, stop dev mode, and add the `<skipUTs>true</skipUTs>` to the module's pom file where unit tests should be skipped. This parameter is handled exclusively by dev mode and changes to it will only take effect on a new dev mode instance (this matches current dev mode behaviour). 
+
+    Node: If skipTests, skipUTs, or skipITsflag is enabled in a module, skip the corresponding tests in that module only. 
 
     For example:
     - in `war/pom.xml` add the following property: `<skipITs>true</skipITs>`
