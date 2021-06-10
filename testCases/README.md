@@ -13,7 +13,7 @@ b)  pom, war+jar
 - Server info in war module
 - Main pom: ./pom.xml
 
-c)  ear(MM)+war+jar    
+~~c)  ear(MM)+war+jar~~
 - invalid: <module> requires packaging type pom
 
 ~~d)  war(MM)+jar~~    
