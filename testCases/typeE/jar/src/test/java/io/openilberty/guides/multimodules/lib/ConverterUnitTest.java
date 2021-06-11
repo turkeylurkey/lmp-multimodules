@@ -8,7 +8,7 @@ public class ConverterUnitTest {
 
     @Test
     public void testHeightFeet() {
-        int feet = Converter.getFeet(61s);
+        int feet = Converter.getFeet(61);
         assertEquals(2, feet);
     }
 
