@@ -38,7 +38,7 @@ h)  server(pom)+ear+war+jar
 - Main pom: ./pom/pom.xml
 - For devc, use -Ddockerfile=../Dockerfile
 
-i)   same as (a) but "ear" project has a <parent> which is not the "pom" project
+i)   same as (a) but "ear" project has a `<parent>` which is not the "pom" project
 - Server info in ear module
 - Main pom: ./pom.xml
 
