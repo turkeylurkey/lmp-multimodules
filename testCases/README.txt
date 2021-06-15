@@ -23,7 +23,9 @@ g)  pom,  server(pom)+ear+war+jar
     -Main pom: ./pom.xml
     -For devc, use -Ddockerfile=../Dockerfile
 h)  server(pom)+ear+war+jar
-    -invalid: <module> requires packaging type pom
+    -Server info in pom module
+    -Main pom: ./pom/pom.xml
+    -For devc, use -Ddockerfile=../Dockerfile
 i)   same as (a) but "ear" project has a <parent> which is not the "pom" project
     -Server info in ear module
     -Main pom: ./pom.xml
