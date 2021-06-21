@@ -42,6 +42,12 @@ i)   same as (a) but "ear" project has a `<parent>` which is not the "pom" pro
 - Server info in ear module
 - Main pom: ./pom.xml
 
+j) server(pom)+war1+war2+jar
+- Server info in pom module
+- Main pom: ./pom.xml
+- For devc, use -Ddockerfile=../Dockerfile
+- This project contains two web applications, war1 (/converter1) and war2 (/converter2)
+
 ## Test process
 - ensure hot deployment works
     - sources
