@@ -63,17 +63,17 @@ typeE
 main module: pom
 upstream modules: ear, war, jar
 
-1. Start dev mode: `mvn io.openliberty.tools:liberty-maven-plugin:3.3.5-M2-SNAPSHOT:dev -pl pom -am`
+1. Start dev mode: `mvn io.openliberty.tools:liberty-maven-plugin:3.3.5-M3-SNAPSHOT:dev` (optionally start with `mvn io.openliberty.tools:liberty-maven-plugin:3.3.5-M3-SNAPSHOT:dev -pl pom -am`)
 
 2. Press `Enter` to run tests, all tests across all modules should run in the same order as the reactor build.
 
-3. Verify hot deployment of a java source file in main and upstream modules. On successful compilation, dev mode should retry compiling all other failing source files across ALL modules. 
+3. Verify hot deployment of a java source file in main and upstream modules. Dev mode should retry compiling all other failing source files in upstream projects (in reactor build order). The current module and all downstream modules should be entirely recompiled. 
 
     For example:
     - in `war/src/main/java/io/openliberty/guides/multimodules/web/HeightsBean.java`, add an extra parameter to one of the `io.openliberty.guides.multimodules.lib.Converter` method calls. Dev mode should throw compilation errors.
     - in `jar/src/main/java/io/openliberty/guides/multimodules/lib/Converter.java`, add the new parameter to the corresponding method. Dev mode should successfully compile the `Converter` class from the jar module, and then try to compile the failing `HeightsBean` class from the war module.
 
-4. Verify hot deployment of a java test file in main and upstream modules. Pressing `Enter` should run tests with latest change. On successful compilation, dev mode should retry compiling all other failing tests within the SAME module. 
+4. Verify hot deployment of a java test file in main and upstream modules. Pressing `Enter` should run tests with latest change on all modules. Dev mode should retry compiling all other failing tests in upstream projects (in reactor build order). All tests should be recompiled for the current module and all downstream modules. 
 
     Try adding a new `src/test/java` directory to any of the upstream modules, that directory should be watched and files within should be compiled upon change.
 
@@ -88,7 +88,7 @@ upstream modules: ear, war, jar
     - when you press Enter, the `HeightsBeanIT.java` tests should be skipped.
 
 
-6. Adding a new dependency to the pom.xml of an upstream module. This should trigger recompiling any classes that failed to compile.
+6. Adding a new dependency to the pom.xml of an upstream module. This should trigger recompiling any classes that failed to compile in upstream modules, then compiling the entire current module and all downstream modules.
 
     For example
     - Add the following to `jar/src/main/java/io/openliberty/guides/multimodules/lib/Converter.java`. Notice the compilation error.
@@ -118,4 +118,9 @@ upstream modules: ear, war, jar
 - Restart server with "r" and "Enter", both with dev mode and devc
 - Compilation errors on startup of dev mode
 - Connecting a debugger
-- Setting `-DhotTests` via command line or `pom.xml` 
+- Setting `-DhotTests` via command line or `pom.xml`. When `-DhotTests` is set, on file change tests should run on the current module and any downstream modules
+- Setting `-DrecompileDependencies=false` (this is true by default for multi-module projects). 
+    On source/test file change:
+    1. Recompile failing classes in upstream modules
+    2. Recompile changed class and other failing classes in the current module (with `-DhotTests=true` rerun tests)
+    3. Recompile failing classes in downstream modules (with `-DhotTests=true` rerun tests)
